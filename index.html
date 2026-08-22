@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="manifest" href="manifest.json">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBC School - Tableau de bord</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- ===============================
+     ÉCRAN DE CONNEXION
+================================ -->
+
+<div id="authScreen" class="auth-screen">
+
+    <div class="auth-box">
+
+        <div class="auth-logo">
+            <h1>SBC</h1>
+            <p>School</p>
+        </div>
+
+        <!-- CONNEXION -->
+
+        <div id="loginForm">
+
+            <h2>Connexion</h2>
+
+            <p>
+                Connectez-vous à votre compte
+            </p>
+
+            <input
+                type="tel"
+                id="loginTelephone"
+                placeholder="📱 Numéro de téléphone"
+            >
+
+            <input
+                type="password"
+                id="loginCode"
+                placeholder="🔢 Code à 4 chiffres"
+                maxlength="4"
+                inputmode="numeric"
+            >
+
+            <button
+                type="button"
+                onclick="connexionSBC()"
+            >
+                🔐 Se connecter
+            </button>
+
+            <p class="auth-link">
+
+                Pas encore de compte ?
+
+                <button
+                    type="button"
+                    onclick="afficherInscription()"
+                >
+                    Créer un compte
+                </button>
+
+            </p>
+
+        </div>
+
+
+        <!-- INSCRIPTION -->
+
+        <div
+            id="registerForm"
+            style="display:none;"
+        >
+
+            <h2>Créer un compte</h2>
+
+            <p>
+                Première utilisation de SBC School
+            </p>
+
+            <input
+                type="text"
+                id="registerNom"
+                placeholder="👤 Nom complet"
+            >
+
+            <input
+                type="tel"
+                id="registerTelephone"
+                placeholder="📱 Numéro de téléphone"
+            >
+
+            <div style="position: relative; width: 100%;">
+
+    <input
+        type="password"
+        id="registerCode"
+        placeholder="🔢 Code à 4 chiffres"
+        maxlength="4"
+        inputmode="numeric"
+        style="padding-right: 50px;"
+    >
+
+    <button
+        type="button"
+        onclick="afficherMasquerCode('registerCode', this)"
+        style="
+            position: absolute;
+            right: 8px;
+            top: 5px;
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            margin: 0;
+            background: transparent;
+            color: #0f3d91;
+            font-size: 18px;
+        "
+    >
+        👁️
+    </button>
+
+</div>
+
+            <div style="position: relative; width: 100%;">
+
+    <input
+        type="password"
+        id="loginCode"
+        placeholder="🔢 Code à 4 chiffres"
+        maxlength="4"
+        inputmode="numeric"
+        style="padding-right: 50px;"
+    >
+
+    <button
+        type="button"
+        onclick="afficherMasquerCode('loginCode', this)"
+        style="
+            position: absolute;
+            right: 8px;
+            top: 5px;
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            margin: 0;
+            background: transparent;
+            color: #0f3d91;
+            font-size: 18px;
+        "
+    >
+        👁️
+    </button>
+
+</div>
+
+            <input
+                type="text"
+                id="registerEtablissement"
+                placeholder="🏫 Nom de l'établissement"
+            >
+
+            <button
+                type="button"
+                onclick="inscrireSBC()"
+            >
+                ✅ Créer mon compte
+            </button>
+
+            <p class="auth-link">
+
+                Déjà un compte ?
+
+                <button
+                    type="button"
+                    onclick="afficherConnexion()"
+                >
+                    Se connecter
+                </button>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+    <div class="app">
+
+        <!-- MENU LATERAL -->
+        <aside class="sidebar">
+
+           <div class="auth-logo">
+
+    <div class="sbc-app-logo">
+        🎓
+    </div>
+
+    <h1>SBC School</h1>
+
+    <p>
+        Gestion scolaire intelligente
+    </p>
+
+</div>
+
+            <nav>
+                <button>🏠 Tableau de bord</button>
+                <button>👨‍🎓 Élèves</button>
+                <button>👨‍🏫 Enseignants</button>
+                <button>🏫 Classes</button>
+                <button>📚 Matières</button>
+                <button>💰 Paiements</button>
+                <button>🧾 Reçus</button>
+                <button>📝 Notes</button>
+                <button>👪 Parents</button>
+                <button>📊 Bulletins</button>
+               <button onclick="afficherMonCompte()">
+    👤 Mon compte
+</button>
+<button onclick="afficherAPropos()">
+    ℹ️ À propos
+</button>
+<button onclick="afficherAbonnement()">
+    💳 Abonnement
+</button>
+<button onclick="afficherSauvegarde()">
+    💾 Sauvegarde
+</button>
+                <button>⚙️ Paramètres</button>
+            </nav>
+
+        </aside>
+
+
+        <!-- CONTENU PRINCIPAL -->
+        <main class="content">
+
+            <header class="topbar">
+                <div>
+                    <h2>Tableau de bord</h2>
+                    <p>Bienvenue dans SBC School</p>
+                </div>
+
+                <div class="admin">
+
+    👤 Administrateur
+
+    <button
+        type="button"
+        onclick="deconnexionSBC()"
+        style="
+            margin-left: 15px;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 6px;
+            background: #d32f2f;
+            color: white;
+            cursor: pointer;
+        "
+    >
+        🔓 Déconnexion
+    </button>
+
+</div>
+            </header>
+
+
+            <!-- STATISTIQUES -->
+            <section class="stats" id="stats">
+
+    <div class="card">
+        <h3>👨‍🎓</h3>
+        <p>Élèves</p>
+        <strong id="totalEleves">0</strong>
+    </div>
+
+    <div class="card">
+        <h3>👨‍🏫</h3>
+        <p>Enseignants</p>
+        <strong id="totalEnseignants">0</strong>
+    </div>
+
+    <div class="card">
+        <h3>🏫</h3>
+        <p>Classes</p>
+        <strong id="totalClasses">0</strong>
+    </div>
+
+    <div class="card">
+        <h3>📚</h3>
+        <p>Matières</p>
+        <strong id="totalMatieres">0</strong>
+    </div>
+
+    <div class="card">
+        <h3>💰</h3>
+        <p>Total encaissé</p>
+        <strong id="totalPaiements">0 FCFA</strong>
+    </div>
+
+    <div class="card">
+        <h3>🧾</h3>
+        <p>Paiements</p>
+        <strong id="nombrePaiements">0</strong>
+    </div>
+    <div class="card"> 
+    <h3>🔴</h3> 
+    <p>Total des impayés</p> 
+    <strong id="totalImpayesDashboard">0 FCFA</strong> 
+</div>
+
+
+<div class="card"> 
+    <h3>📅</h3> 
+    <p>Encaissement du mois</p> 
+    <strong id="totalMoisDashboard">0 FCFA</strong> 
+</div>
+
+</section>
+
+
+            <!-- ACTIVITES -->
+            <section class="dashboard-section" id="dashboardContent">
+
+    <h2>Activités récentes</h2>
+
+    <div class="empty">
+        <p>Aucune activité pour le moment.</p>
+    </div>
+
+</section>
+
+        </main>
+
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+    if ("serviceWorker" in navigator) {
+
+        window.addEventListener("load", function() {
+
+            navigator.serviceWorker.register(
+                "service-worker.js"
+            )
+            .then(function() {
+
+                console.log(
+                    "✅ SBC School : Service Worker actif"
+                );
+
+            })
+            .catch(function(erreur) {
+
+                console.log(
+                    "❌ Erreur Service Worker :",
+                    erreur
+                );
+
+            });
+
+        });
+
+    }
+</script>
+
+</body>
+</html>

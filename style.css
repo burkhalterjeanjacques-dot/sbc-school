@@ -1,0 +1,827 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    color: #1e293b;
+}
+
+.app {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* MENU LATERAL */
+
+.sidebar {
+    width: 250px;
+    background: #0f3d91;
+    color: white;
+    min-height: 100vh;
+    padding: 25px 15px;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.logo h1 {
+    font-size: 38px;
+    letter-spacing: 2px;
+}
+
+.logo p {
+    font-size: 18px;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+nav button {
+    background: transparent;
+    border: none;
+    color: white;
+    text-align: left;
+    padding: 13px 15px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+nav button:hover {
+    background: #1c56b8;
+}
+
+/* CONTENU */
+
+.content {
+    flex: 1;
+    padding: 30px;
+}
+
+/* BARRE DU HAUT */
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 20px 25px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.topbar h2 {
+    font-size: 26px;
+    margin-bottom: 5px;
+}
+
+.topbar p {
+    color: #64748b;
+}
+
+.admin {
+    background: #eef4ff;
+    color: #0f3d91;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+/* STATISTIQUES */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.card h3 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #64748b;
+    margin-bottom: 10px;
+}
+
+.card strong {
+    font-size: 25px;
+}
+
+/* ACTIVITES */
+
+.dashboard-section {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.dashboard-section h2 {
+    margin-bottom: 20px;
+}
+
+.empty {
+    background: #f8fafc;
+    padding: 35px;
+    text-align: center;
+    border-radius: 8px;
+    color: #64748b;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+
+    .sidebar {
+        width: 210px;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+
+    .app {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+}
+/* ===============================
+   FORMULAIRE DES ÉLÈVES
+   =============================== */
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.section-header h2 {
+    margin-bottom: 6px;
+}
+
+.section-header p {
+    color: #64748b;
+}
+
+.add-button {
+    background: #0f3d91;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.add-button:hover {
+    background: #082d70;
+}
+
+
+/* RECHERCHE */
+
+.student-search {
+    margin-bottom: 20px;
+}
+
+.student-search input {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid #dbe2ea;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+}
+
+.student-search input:focus {
+    border-color: #0f3d91;
+}
+
+
+/* TABLEAU */
+
+.student-table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.student-table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.student-table-container th,
+.student-table-container td {
+    padding: 14px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+.student-table-container th {
+    background: #f1f5f9;
+    font-weight: bold;
+}
+
+.student-table-container tr:hover {
+    background: #f8fafc;
+}
+
+
+/* FORMULAIRE */
+
+.form-container {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.form-title {
+    margin-bottom: 30px;
+}
+
+.form-title h2 {
+    margin-bottom: 6px;
+}
+
+.form-title p {
+    color: #64748b;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select {
+    padding: 12px;
+    border: 1px solid #dbe2ea;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #0f3d91;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.cancel-button {
+    background: #e5e7eb;
+    color: #1e293b;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.save-button {
+    background: #0f3d91;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.save-button:hover {
+    background: #082d70;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+}
+/* ===============================
+   IMPRESSION BULLETIN A4
+================================ */
+
+@media print {
+
+    @page {
+        size: A4 portrait;
+        margin: 12mm;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background: white;
+    }
+
+    .sidebar,
+    .topbar,
+    .student-search,
+    .add-button,
+    .save-button,
+    .cancel-button,
+    button {
+        display: none !important;
+    }
+
+    .app {
+        display: block;
+    }
+
+    .content {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    #dashboardContent {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .bulletin {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 10mm;
+        background: white;
+        box-shadow: none;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        border: 1px solid #000;
+        padding: 6px;
+        font-size: 11px;
+    }
+
+    h1,
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+
+    table {
+        page-break-inside: avoid;
+    }
+}
+/* ===============================
+   SBC SCHOOL - AUTHENTIFICATION
+================================ */
+
+.auth-screen {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    background: linear-gradient(
+        135deg,
+        #0f3d91,
+        #1d63c8
+    );
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    z-index: 99999;
+
+}
+
+
+.auth-box {
+
+    width: 380px;
+
+    max-width: 90%;
+
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0, 0, 0, 0.25);
+
+    text-align: center;
+
+}
+
+
+.auth-logo h1 {
+
+    margin: 0;
+
+    font-size: 48px;
+
+    color: #0f3d91;
+
+}
+
+
+.auth-logo p {
+
+    margin-top: -8px;
+
+    font-size: 18px;
+
+    color: #555;
+
+}
+
+
+.auth-box h2 {
+
+    margin-top: 25px;
+
+    color: #222;
+
+}
+
+
+.auth-box > div > p {
+
+    color: #777;
+
+    margin-bottom: 20px;
+
+}
+
+
+.auth-box input {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 14px;
+
+    margin-bottom: 12px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    outline: none;
+
+}
+
+
+.auth-box input:focus {
+
+    border-color: #0f3d91;
+
+    box-shadow:
+        0 0 0 2px
+        rgba(15, 61, 145, 0.1);
+
+}
+
+
+.auth-box button {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #0f3d91;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    margin-top: 5px;
+
+}
+
+
+.auth-box button:hover {
+
+    background: #0b2f72;
+
+}
+
+
+.auth-link {
+
+    margin-top: 20px;
+
+    font-size: 14px;
+
+}
+
+
+.auth-link button {
+
+    width: auto;
+
+    padding: 0;
+
+    margin: 0;
+
+    background: none;
+
+    color: #0f3d91;
+
+    font-size: 14px;
+
+}
+
+
+.auth-link button:hover {
+
+    background: none;
+
+    text-decoration: underline;
+
+}
+
+
+@media (max-width: 500px) {
+
+    .auth-box {
+
+        padding: 25px;
+
+    }
+
+}
+/* ===============================
+   SBC SCHOOL - LOGO CONNEXION
+================================ */
+
+.sbc-app-logo {
+
+    width: 85px;
+    height: 85px;
+
+    margin: 0 auto 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #0f3d91;
+
+    border-radius: 22px;
+
+    font-size: 42px;
+
+    box-shadow:
+        0 8px 20px
+        rgba(15, 61, 145, 0.25);
+
+}
+
+
+.auth-logo h1 {
+
+    font-size: 32px;
+
+    margin: 0;
+
+    color: #0f3d91;
+
+    font-weight: 700;
+
+}
+
+
+.auth-logo p {
+
+    margin-top: 6px;
+
+    font-size: 15px;
+
+    color: #777;
+
+}
+/* =========================================
+   SBC SCHOOL - VERSION MOBILE
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    /* Menu */
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    nav button {
+        flex: 1 1 45%;
+        min-height: 45px;
+        font-size: 14px;
+    }
+
+
+    /* Contenu principal */
+
+    #dashboardContent {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+
+    /* Formulaires */
+
+    .form-container {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 15px;
+        margin: 10px 0;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .form-group {
+        width: 100%;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 16px;
+        min-height: 45px;
+    }
+
+
+    /* Boutons */
+
+    .form-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .form-actions button {
+        width: 100%;
+        min-height: 45px;
+    }
+
+
+    /* Tableaux */
+
+    .student-table-container {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .student-table-container table {
+        min-width: 650px;
+    }
+
+
+    /* Cartes */
+
+    .dashboard-cards {
+        grid-template-columns: 1fr !important;
+    }
+
+
+    /* Abonnements */
+
+    .subscription-container {
+        grid-template-columns: 1fr !important;
+    }
+
+
+    /* Bulletin */
+
+    .bulletin-container {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+
+    /* Titres */
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 21px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+
+    /* Images */
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+}
