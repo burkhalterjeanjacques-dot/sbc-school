@@ -10021,21 +10021,30 @@ function inscrireSBC() {
 
     // Vérification des champs
 
-    if (
-        !nom ||
-        !telephone ||
-        !code ||
-        !confirmation ||
-        !etablissement
-    ) {
+   if (!nom) {
+    alert("⚠️ Le champ NOM est vide.");
+    return;
+}
 
-        alert(
-            "⚠️ Veuillez remplir tous les champs."
-        );
+if (!telephone) {
+    alert("⚠️ Le champ TÉLÉPHONE est vide.");
+    return;
+}
 
-        return;
+if (!code) {
+    alert("⚠️ Le premier CODE est vide.");
+    return;
+}
 
-    }
+if (!confirmation) {
+    alert("⚠️ La CONFIRMATION DU CODE est vide.");
+    return;
+}
+
+if (!etablissement) {
+    alert("⚠️ Le NOM DE L'ÉTABLISSEMENT est vide.");
+    return;
+}
 
 
     // Vérifier le code
